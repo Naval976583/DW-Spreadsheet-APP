@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Sheets Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Google Sheets Manager</h1>
+
+        <div class="section">
+            <h3 class="section-title">Google Spreadsheet URL</h3>
+            <input type="text" id="sheetUrl" placeholder="Enter Google Spreadsheet URL">
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">Manage Entry</h3>
+            <input type="text" id="matchDict" placeholder='Enter Matching Data as {"key1": "value1"}' style="display: none;">
+            <input type="text" id="entryDict" placeholder='Enter Data as {"key1": "value1", "key2": "value2"}'>
+            <select id="action" onchange="toggleInputFields()">
+                <option value="add">Add Entry</option>
+                <option value="update">Update Entry</option>
+                <option value="delete">Delete Entry</option>
+            </select>
+            <button onclick="manageEntry()">Execute</button>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">View Entries</h3>
+            <button onclick="fetchEntries()">Show Entries</button>
+            <div id="output"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
